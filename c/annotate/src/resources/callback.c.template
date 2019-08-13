@@ -1,0 +1,5 @@
+intptr_t __{function_name}_callback__(const void *a) {{
+  struct __{function_name}_callable__ *arg = (struct __{function_name}_callable__ *)a;
+  {return_value}{function_name}({callback_call_list});
+  return {final_return_value};
+}}

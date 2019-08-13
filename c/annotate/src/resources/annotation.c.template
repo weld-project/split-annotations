@@ -1,0 +1,11 @@
+static AnnotationRef __{function_name}_function_annotations__() {{
+  static AnnotationRef s;
+  if (s) {{
+    return s;
+  }} else {{
+    s = InitFromJson("{annotation_json}");
+
+    {set_split_type_info}
+  }}
+  return s;
+}}

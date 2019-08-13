@@ -1,0 +1,49 @@
+@sa(wand: WandSplit()) -> WandSplit() {
+  MagickWand *CloneMagickWand(MagickWand *);
+  MagickWand *DestroyMagickWand(MagickWand *);
+}
+
+@sa() -> broadcast {
+  PixelWand *NewPixelWand();
+}
+
+@sa(wand: broadcast) -> broadcast {
+  PixelWand *DestroyPixelWand(PixelWand *);
+}
+
+@sa(wand: broadcast, color: broadcast) {
+  void PixelSetColor(PixelWand *, const char *);
+}
+
+@sa(wand: WandSplit(), colorize: broadcast, alpha: broadcast) -> broadcast {
+  MagickBooleanType MagickColorizeImage(MagickWand *, PixelWand *, PixelWand *);
+}
+
+@sa(wand: WandSplit(), colorspace: broadcast) -> broadcast {
+  MagickBooleanType MagickSetImageColorspace(MagickWand *, const ColorspaceType);
+}
+
+@sa(wand: WandSplit(), flag: broadcast) -> broadcast {
+  MagickBooleanType MagickNegateImage(MagickWand *, const MagickBooleanType);
+  MagickBooleanType MagickContrastImage(MagickWand *, const MagickBooleanType);
+}
+
+@sa(wand: WandSplit(), key: broadcast, value: broadcast) -> broadcast {
+  MagickBooleanType MagickSetImageArtifact(MagickWand *, const char*, const char*);
+}
+
+@sa(wand: WandSplit(), hue: broadcast, saturation: broadcast, value: broadcast) -> broadcast {
+  MagickBooleanType MagickModulateImage(MagickWand *, const double, const double, const double);
+}
+
+@sa(wand: WandSplit(), gamma: broadcast) -> broadcast {
+  MagickBooleanType MagickGammaImage(MagickWand *, const double);
+}
+
+@sa(wand: WandSplit(), other: WandSplit(), kind: broadcast,
+      clip: broadcast, x_offset: broadcast, y_offset: broadcast) -> broadcast {
+
+  MagickBooleanType MagickCompositeImage(MagickWand *,
+    const MagickWand *,const CompositeOperator,
+    const MagickBooleanType, const ssize_t, const ssize_t);
+}

@@ -1,0 +1,69 @@
+#!/usr/bin/python
+
+import argparse
+import csv
+import random
+
+def transformCSV_birth_analysis(inputFile, outputFile, replicationFactor):
+    years = [str(i) for i in range(0, 1000 * replicationFactor)]
+    gender = [str(i) for i in range(0, 4)]
+    with open(inputFile, 'r') as f1, open(outputFile, 'w') as f2:
+        lineId = 0
+        numCols = 0
+        count = 0
+        for line in csv.reader(f1, delimiter=','):
+            if lineId == 0:
+                numCols = len(line)
+            if len(line) != numCols:
+                continue
+            line_ele_list = [str(line_ele) for line_ele in line]
+
+            for factor in range(0, replicationFactor):
+                count += 1
+                new_year = years[count % len(years)]
+                # This is a hack. We need to get to the bottom of pandas ordering on sorts
+                # which is causing grizzly to include "Leslyn" when pandas does not
+                # for birth analysis (sort on groupmerger).
+                num_diff = str(int(line_ele_list[2]) + count)
+                new_gender = gender[count % len(gender)]
+                new_line_list = [new_year, line_ele_list[0], line_ele_list[1], num_diff]
+                f2.write(','.join(new_line_list))
+                f2.write('\n')
+        lineId += 1
+
+def transformCSV(inputFile, outputFile, replicationFactor):
+    with open(inputFile, 'r') as f1, open(outputFile, 'w') as f2:
+        lineId = 0
+        numCols = 0
+        for line in csv.reader(f1, delimiter=','):
+            if lineId == 0:
+                numCols = len(line)
+                f2.write(','.join([str(line_ele) for line_ele in line]))
+                f2.write('\n')
+            else:
+                if len(line) != numCols:
+                    continue
+                for i in xrange(replicationFactor):
+                    f2.write(','.join([str(line_ele) for line_ele in line]))
+                    f2.write('\n')
+            lineId += 1
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+        description=("Produce plot of data dumped in provided data file")
+    )
+    parser.add_argument('-i', "--inputFile", required=True,
+                        help="Input CSV file")
+    parser.add_argument('-o', "--outputFile", required=True,
+                        help="Output CSV file")
+    parser.add_argument('-r', "--replicationFactor", default=1, type=int,
+                        help="Number of times to replicate input row in output file")
+
+    cmdLineArgs = parser.parse_args()
+    optDict = vars(cmdLineArgs)
+    if optDict["inputFile"].split("/")[-1].startswith("yob"):
+        transformCSV_birth_analysis(optDict["inputFile"], optDict["outputFile"],
+                                    optDict["replicationFactor"])
+    else:
+        transformCSV(optDict["inputFile"], optDict["outputFile"],
+                     optDict["replicationFactor"])

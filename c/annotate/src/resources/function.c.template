@@ -1,0 +1,13 @@
+{return_type} {prefix}{function_name}({argument_list}) {{
+  if (composer_evaluate()) {{
+    {return_tag} {function_name}({function_call_args});
+  }} else {{
+    composer_protect_all(); 
+    struct __{function_name}_callable__ v;
+    {argstruct_construct_list}
+    {register_return}composer_register_function(__{function_name}_function_annotations__(),
+      __{function_name}_callback__,
+      (void *)&v, {has_return_value}); 
+    {return_line}
+  }}
+}}

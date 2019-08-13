@@ -1,0 +1,14 @@
+[package]
+name = "annotate"
+version = "0.1.0"
+authors = ["Shoumik Palkar <shoumik@cs.stanford.edu>"]
+edition = "2018"
+
+[dependencies]
+clap = "2.3"
+composer = { path = "../composer" }
+nom = "^4"
+serde_json = "1.0"
+subprocess = "0.1.18"
+env_logger = "0.6.0"
+log = "0.4.6"

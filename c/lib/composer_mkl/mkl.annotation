@@ -1,0 +1,28 @@
+@sa (n: SizeSplit(), a: RegularSplit(n), b: RegularSplit(n), out: RegularSplit(n)) {
+    void vdAdd(MKL_INT n, double *a, double *b, double *out);
+    void vdDiv(MKL_INT n, double *a, double *b, double *out);
+    void vdMul(MKL_INT n, double *a, double *b, double *out);
+    void vdSub(MKL_INT n, double *a, double *b, double *out);
+}
+
+@sa (n: SizeSplit(), a: RegularSplit(n), b: RegularSplit(n)) {
+    void vdAsin(MKL_INT n, double *a, double *out);
+    void vdCos(MKL_INT n, double *a, double *out);
+    void vdErf(MKL_INT n, double *a, double *out);
+    void vdExp(MKL_INT n, double *a, double *out);
+    void vdLog1p(MKL_INT n, double *a, double *out);
+    void vdSin(MKL_INT n, double *a, double *out);
+    void vdSqrt(MKL_INT n, double *a, double *out);
+}
+
+@sa (n: SizeSplit(), a: RegularSplit(n), b: broadcast, out: RegularSplit(n)) {
+    void vdAddi(MKL_INT n, double *a, double b, double *out);
+    void vdDivi(MKL_INT n, double *a, double b, double *out);
+    void vdMuli(MKL_INT n, double *a, double b, double *out);
+    void vdSubi(MKL_INT n, double *a, double b, double *out);
+    void vdPowx(MKL_INT n, double *a, double b, double *out);
+}
+
+@sa (n: SizeSplit(), a: broadcast, b: RegularSplit(n), out: RegularSplit(n)) {
+    void vdSubvi(MKL_INT n, double a, double *b, double *out);
+}

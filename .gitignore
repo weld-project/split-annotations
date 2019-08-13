@@ -1,0 +1,43 @@
+target/
+generated/
+**/*.rs.bk
+Cargo.lock
+composer.h
+__pycache__
+*.pyc
+
+# Ignore built libraries.
+*.dylib
+*.so
+*.swp
+*.swo
+*.dSYM/
+
+# ignore debugging code
+*.s
+*.S
+*.ll
+
+bench
+out
+eigen
+perf.data*
+
+*.jpg
+*.tif
+
+# Ignore Python virtualenv.
+python/benchmarks/benchmarks
+
+# Ignore various projects
+weld/
+weld-latest/
+bohrium/
+
+# Data
+babynames*
+ml-*
+
+# Benchmark output
+*.stdout
+*.stderr
