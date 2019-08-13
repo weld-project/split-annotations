@@ -5,6 +5,7 @@ Cargo.lock
 composer.h
 __pycache__
 *.pyc
+.DS_Store
 
 # Ignore built libraries.
 *.dylib
