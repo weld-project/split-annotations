@@ -2,13 +2,23 @@
 
 This document describes how to run the main experiments in the SOSP 2019 paper. The goal of this document is to satisfy the ACM "Artifact Functional" requirements.
 
-Most of the setup required in this document in done already in [this Amazon AMI image](/). *In particular, the steps that are pre-installed on this AMI are marked as "**(preinstalled)**."*
+Most of the setup required in this document in done already in the Amazon AWS AMI image described below. *In particular, the steps that are pre-installed on this AMI are marked as "**(preinstalled)**."*
 
 ## System Requirements
 
 We have only tested the experiments on an m4.10xlarge Amazon EC2 instance. We
 have made a public AMI that can be used to run everything, with all necessary
-packages etc. pre-installed. The AMI ID is FIXME.
+packages etc. pre-installed.
+
+| Field  | Value |
+| -------------  | ------------- |
+| Cloud Provider | AWS |
+| Region         | us-west-2  |
+| AMI ID         | ami-0312f629d1551e6b2  |
+| AMI Name       | split-annotations-public-sosp19 |
+| Instance Type  | m4.10xlarge |
+
+See [this link](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) for how to find and launch a public AMI (this assumes you have a valid billable AWS account setup).
 
 For anyone running outside of this environment, the assumed system requirements are:
 
