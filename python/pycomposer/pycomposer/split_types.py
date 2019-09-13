@@ -1,8 +1,5 @@
-
-
 from abc import ABC, abstractmethod
 import copy
-import numpy as np
 
 class SplitTypeError(TypeError):
     """ Custom type error for when annotation types cannot be propagated.
@@ -56,7 +53,11 @@ class SplitType(ABC):
         pass
 
     def __eq__(self, other):
-        """ Check whether two types are equal. """
+        """ Check whether two types are equal.
+
+        Note that two split types are equal if (a) they have the same class
+        name and (b) their attributes dictionary is equal.
+        """
         if other is None:
             return False
         return self.__dict__ == other.__dict__() and\
