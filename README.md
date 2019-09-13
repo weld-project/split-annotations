@@ -4,21 +4,9 @@ This is the main source code repository for Split Annotations. It contains the s
 
 Split annotations (SAs) are a system for enabling optimizations such as pipelining and parallelization underneath existing libraries. Other approaches for enabling these optimizations, such as intermediate representations, compilers, or DSLs, are heavyweight solutions that require re-architecting existing code. Unlike these approaches, SAs enable these optimizations _without requiring changes to existing library functions_.
 
-## Getting Started
+You can get started with split annotations in Python with: `pip install sa`.
 
-You can get started with split annotations in Python by downloading it via `pip` or `conda`:
-
-```bash
-pip install splitanno
-```
-
-or 
-
-```
-conda install splitanno
-```
-
-Read on to see how to use the C version of split annotations.
+See [Installing from Source](#installing-from-source) for instructions on how to build the C version of split annotations.
 
 ## Installing from Source
 

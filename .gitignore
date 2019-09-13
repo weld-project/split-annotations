@@ -42,3 +42,8 @@ ml-*
 # Benchmark output
 *.stdout
 *.stderr
+
+# Ignore Python distribution stuff
+python/pycomposer/build/
+python/pycomposer/dist/
+python/pycomposer/sa.egg-info/
