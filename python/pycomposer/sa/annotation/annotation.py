@@ -10,8 +10,20 @@ class Mut(object):
     def __init__(self, value):
         self.value = value
 
-# Constructor for mutables.
-mut = lambda x: Mut(x)
+def mut(x):
+    """ A function that marks an argument as mutable.
+
+    Parameters
+    ----------
+    x : SplitType
+        Split type for argument that will be mutated within the annotation.
+
+    Returns
+    -------
+    SplitType
+
+    """
+    return Mut(x)
 
 class Annotation(object):
     """ An annotation on a function.
@@ -24,7 +36,7 @@ class Annotation(object):
     __slots__ = [ "mutables", "arg_types", "return_type", "kwarg_types" ]
 
     def __init__(self, func, types, kwtypes, return_type):
-        """ Initialize an annotation for a function invocation with the given
+        """Initialize an annotation for a function invocation with the given
         arguments.
 
         Parameters
