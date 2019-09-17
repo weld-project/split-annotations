@@ -1,5 +1,5 @@
-API Reference For Using Annotated Libraries
-===========================================
+Using Annotated Libraries
+*************************
 
 .. highlight:: python
 

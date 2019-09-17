@@ -1,5 +1,5 @@
-API Reference For Writing Split Annotations
-===========================================
+API Reference for Writing SAs
+*****************************
 
 .. automodule:: sa.annotation
     :members: sa, mut

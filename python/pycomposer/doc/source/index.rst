@@ -1,5 +1,7 @@
 split annotations: optimizing apps that combine APIs
-====================================================
+****************************************************
+
+**Current version: 0.0.2**
 
 Welcome to split annotations for Python!
 
@@ -22,18 +24,18 @@ require Python 3.5 or above.
 `PyPi <https://pypi.org/project/sa/>`_
 
 Documentation
--------------
+=============
 
 .. toctree::
     :maxdepth: 1
-    :titlesonly:
 
+    Home <index>
     getting_started
     api_reference
     annotated_libraries
 
 Index
--------
+=============
 
 * :ref:`genindex`
 * :ref:`modindex`

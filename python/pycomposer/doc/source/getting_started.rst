@@ -1,5 +1,5 @@
-Getting Started with Split Annotations
-======================================
+Getting Started
+**************************************
 
 This package contains examples of how to use split annotations (SAs) for your own
 programs.
@@ -23,7 +23,7 @@ functions that applications use that do not have annotations should work as
 always.
 
 Writing your own annotations 
-============================
+======================================
 
 Say we have a simple library that performs element-wise operations on Python
 lists. It has a few functions, as define below::

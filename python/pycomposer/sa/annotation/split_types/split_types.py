@@ -231,8 +231,8 @@ class Broadcast(SplitType):
     def combine(self, values):
         """ A combiner that returns itself.
 
-        Paramters
-        ---------
+        Parameters
+        ----------
             values : list
                 A list that contains a single value.
 
@@ -248,15 +248,15 @@ class Broadcast(SplitType):
     def split(self, start, end, value):
         """ A splitter that returns the value unmodified.
 
-        Paramters
-        ---------
+        Parameters
+        ----------
             start : int
                 Unused.
             end : int
                 Unused.
             value : any
                 The value to broadcast
-
+            
         Returns
         -------
             any
