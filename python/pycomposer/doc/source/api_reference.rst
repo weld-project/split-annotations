@@ -1,8 +1,10 @@
-API Reference For Writing Annotations
-=====================================
+API Reference For Writing Split Annotations
+===========================================
 
-This page gives an overview of how to use the ``sa.annotation`` package for
-annotating functions.
+.. automodule:: sa.annotation
+    :members: sa, mut
+    :special-members:
+    :exclude-members: __call__, __weakref__
+    :show-inheritance:
 
-.. toctree::
-  sa.annotation
+.. toctree:: sa.annotation.split_types

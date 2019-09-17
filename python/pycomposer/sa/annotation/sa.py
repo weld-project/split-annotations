@@ -13,7 +13,7 @@ _DAG = LogicalPlan()
 class sa(object):
     """ A split annotation.
 
-    Split annotations are Python annotations over ordinary Python functions or
+    Split annotations are Python decorators over ordinary Python functions or
     methods. For each function, a split annotation uses *split types* to define
     how each argument in the function is split. By splitting function
     arguments, the underlying runtime can introduce parallelization and
@@ -22,7 +22,11 @@ class sa(object):
     """
 
     def __init__(self, types, kwtypes, return_type):
-        """ A splitability annotation.
+        """ Creates a split annotation (SA) for the provided function signature.
+
+        The SA can either be used as a Python decorator or as a function that
+        is called on another function. For the latter, users should
+        ``deepcopy`` this class for each annotated function.
 
         Parameters
         ----------

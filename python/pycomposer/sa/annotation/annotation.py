@@ -13,6 +13,10 @@ class Mut(object):
 def mut(x):
     """ A function that marks an argument as mutable.
 
+    If a function mutates an argument (e.g., removing an item from a list), the
+    SA should mark the split type for that argument with this function. This
+    allows the runtime to track data dependencies among functions correctly.
+
     Parameters
     ----------
     x : SplitType

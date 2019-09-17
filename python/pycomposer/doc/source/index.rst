@@ -1,10 +1,5 @@
-.. sa documentation master file, created by
-   sphinx-quickstart on Mon Sep 16 10:21:45 2019.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 split annotations: optimizing apps that combine APIs
-===========================================================
+====================================================
 
 Welcome to split annotations for Python!
 
@@ -27,14 +22,15 @@ require Python 3.5 or above.
 `PyPi <https://pypi.org/project/sa/>`_
 
 Documentation
--------
+-------------
 
 .. toctree::
-  :maxdepth: 3
+    :maxdepth: 1
+    :titlesonly:
 
-  getting_started
-  api_reference
-  annotated_libraries
+    getting_started
+    api_reference
+    annotated_libraries
 
 Index
 -------

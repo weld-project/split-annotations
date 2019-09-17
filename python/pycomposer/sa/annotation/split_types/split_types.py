@@ -1,3 +1,5 @@
+
+
 from abc import ABC, abstractmethod
 import copy
 
@@ -227,13 +229,45 @@ class Broadcast(SplitType):
         pass
 
     def combine(self, values):
+        """ A combiner that returns itself.
+
+        Paramters
+        ---------
+            values : list
+                A list that contains a single value.
+
+        Returns
+        -------
+            any
+                Returns ``values[0]``
+
+        """
         if len(values) > 0:
             return values[0]
 
-    def split(self, _start, _end, value):
+    def split(self, start, end, value):
+        """ A splitter that returns the value unmodified.
+
+        Paramters
+        ---------
+            start : int
+                Unused.
+            end : int
+                Unused.
+            value : any
+                The value to broadcast
+
+        Returns
+        -------
+            any
+                Returns ``value``.
+
+        """
         return value
 
     def elements(self, _):
+        """ Returns ``None`` to indicate infinite elements."""
         return None
 
     def __str__(self): return "broadcast"
+
