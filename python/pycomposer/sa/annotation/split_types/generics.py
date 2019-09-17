@@ -1,3 +1,15 @@
+""" Convinience methods to create generic split types.
+
+A generic split type can take on the value of any other split type during
+execution. Generics with the same name (e.g., ``A``) are always assigned the
+same concrete split type.  Generic names are local to a single SA (i.e., two
+SAs which use the generic ``A`` could have the ``A`` assigned different
+concrete split types). Generic split types are assigned concrete split types via *type inference*.
+
+Note that, if a generic split type cannot be assigned a concrete split type at
+execution time, an error will be thrown.
+
+"""
 
 from .split_types import GenericType
 

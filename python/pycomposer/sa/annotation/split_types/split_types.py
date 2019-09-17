@@ -29,17 +29,30 @@ class SplitType(ABC):
         """ Returns the number of elements that this value will emit.
         
         This function should return `None` if the splitter will emit elements
-        indefinitely.
-
-        The default implementation calls `len` on value. If this is not
-        suitable, the split type should override this method.
+        indefinitely. The default implementation calls `len` on value. If this
+        is not suitable, the split type should override this method.
 
         """
         return len(value)
 
     @abstractmethod
     def combine(self, values):
-        """Combine a list of values into a single merged value."""
+        """Combine a list of values into a single merged value.
+
+        This method should be associative.
+
+        Parameters
+        ----------
+
+        values : list
+            A list of values that should be combined into a single value.
+
+        Returns
+        -------
+        any
+            Returns the combined value.
+
+        """
         pass
 
     @abstractmethod
@@ -48,7 +61,19 @@ class SplitType(ABC):
         
         split can return any iterable object, but will preferably return a
         generator that lazily yields split values from the source object.
-        
+
+        Parameters
+        ----------
+
+        obj : any
+            An object that should be split into multiple objects of the same
+            type.
+
+        Returns
+        -------
+        iterable
+            An iterable that collectively represents the input object.
+
         """
         pass
 

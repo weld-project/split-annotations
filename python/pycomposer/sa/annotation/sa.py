@@ -11,7 +11,15 @@ import copy
 _DAG = LogicalPlan()
 
 class sa(object):
-    """ A splitability annotation."""
+    """ A split annotation.
+
+    Split annotations are Python annotations over ordinary Python functions or
+    methods. For each function, a split annotation uses *split types* to define
+    how each argument in the function is split. By splitting function
+    arguments, the underlying runtime can introduce parallelization and
+    optimizations such as loop pipelining.
+
+    """
 
     def __init__(self, types, kwtypes, return_type):
         """ A splitability annotation.
@@ -19,14 +27,19 @@ class sa(object):
         Parameters
         ----------
 
-        postypes : a tuple of split types for each positional argument. The number of elements in the tuple must match the number
-        of positional arguments in the funciton.
+        postypes : tuple of SplitType
+            a tuple of split types for each positional argument. The number of
+            elements in the tuple must match the number of positional arguments
+            in the function.
 
-        kwtypes : a dictionary of split types for each keyword argument. Providing
-        split types for keyword arguments is optional. If a keyword argument does
-        not have a split type, its split type will default to "broadcast."
+        kwtypes : dict from str -> SplitType or None
+            a dictionary of split types for each keyword argument. Providing
+            split types for keyword arguments is optional. If a keyword
+            argument does not have a split type, its split type will default to
+            "broadcast."
 
-        return_type : split type of the value returned by this function.
+        return_type : SplitType or None
+            split type of the value returned by this function.
 
         """
         self.types = types

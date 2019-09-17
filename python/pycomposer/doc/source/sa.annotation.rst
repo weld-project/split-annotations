@@ -1,15 +1,17 @@
 ``sa.annotation``
 =================
 
+Subpackages
+-----------
+
 .. toctree::
     sa.annotation.split_types
 
-.. automodule:: sa.annotation.sa
-    :members:
-    :special-members: __init__
-    :show-inheritance:
+Documentation
+-----------
 
-.. automodule:: sa.annotation.annotation
-    :members: mut
-    :special-members: __init__
+.. automodule:: sa.annotation
+    :members: sa, mut
+    :special-members:
+    :exclude-members: __call__, __weakref__
     :show-inheritance:
