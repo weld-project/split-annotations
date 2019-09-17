@@ -1,4 +1,5 @@
 from .annotation import Annotation, mut
+from .config import config
 from .dag import LogicalPlan, evaluate_dag
 from .split_types import *
 from .vm.driver import DEFAULT_BATCH_SIZE
@@ -59,5 +60,5 @@ class sa(object):
 
         return _decorated
 
-def evaluate(workers=1, batch_size=DEFAULT_BATCH_SIZE, profile=False):
+def evaluate(workers=config["workers"], batch_size=config["batch_size"], profile=False):
     evaluate_dag(_DAG, workers, batch_size, profile)

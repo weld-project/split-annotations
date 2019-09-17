@@ -3,6 +3,7 @@ from collections import defaultdict, deque
 import copy
 
 from .annotation import Annotation
+from .config import config
 from .split_types import *
 from .unevaluated import UNEVALUATED
 
@@ -115,7 +116,7 @@ class Operation:
 
         """
         if self._output is UNEVALUATED:
-            evaluate_dag(self._owner_ref, workers=workers)
+            evaluate_dag(self._owner_ref)
         return self._output
 
     def _str(self, depth):
@@ -134,13 +135,45 @@ class Operation:
     def pretty_print(self):
         return "\n" + self._str(0)
 
+    ## Magic Methods
+    # NOTE: Some of these are broken (e.g., == won't evaluate right now since
+    # its needed by Operation)
+
     def __eq__(self, other):
         """ Override equality to always check by reference. """
-        return id(self) == id(other)
+        if self._output is UNEVALUATED:
+            return id(self) == id(other)
+        else:
+            return self._output == other
 
     def __hash__(self):
         """ Override equality to always check by reference. """
-        return id(self)
+        if self._output is UNEVALUATED:
+            return id(self)
+        else:
+            return hash(self._output)
+
+    def __getitem__(self, key):
+        return self.value.__getitem__(key)
+
+    def __setitem__(self, key, value):
+        return self.value.__getitem__(key, value)
+
+    def __len__(self):
+        return len(self.value)
+
+    def __iter__(self):
+        return self.value.__iter__()
+
+    def __reversed__(self):
+        return self.value.__reversed__()
+
+    def __contains__(self, item):
+        return self.value.__contains__(item)
+
+    def __missing__(self, key):
+        return self.value.__missing__(key)
+
 
 class Future:
     """
@@ -368,7 +401,8 @@ class LogicalPlan:
 
             result = vm.register_value(op)
             # In this context, mutability just means we need to merge objects.
-            setattr(op.annotation.return_type, "mutable", not op.dontsend)
+            if op.annotation.return_type is not None:
+                setattr(op.annotation.return_type, "mutable", not op.dontsend)
             vm.program.insts.append(Call(result, op.func, args, kwargs, op.annotation.return_type))
             added.add(op)
 
@@ -395,7 +429,7 @@ class LogicalPlan:
         return "\n".join(roots)
 
 
-def evaluate_dag(dag, workers=1, batch_size=DEFAULT_BATCH_SIZE, profile=False):
+def evaluate_dag(dag, workers=config["workers"], batch_size=config["batch_size"], profile=False):
     try:
         dag.infer_types()
     except (SplitTypeError) as e:

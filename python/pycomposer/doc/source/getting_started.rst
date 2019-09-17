@@ -120,15 +120,18 @@ parallel worker. In this case, we want to broadcast the constant ``const_b``
 instead of splitting it.
 
 As a final example, let's look at a function that returns nothing and modifies
-an argument in-place::
+an argument in-place. We'll use NumPy arrays for this example, which support
+views into lists (notice how we don't need to change the implementation of
+``ListSplit`` here, since our code for the ``split`` function will already work
+for NumPy arrays)::
 
     from sa.annotation import sa, mut
     from sa.annotation.split_types import Broadcast
 
     @sa((mut(ListSplit()), Broadcast()), {}, None)
-    def scale(a, const_b):
+    def scale_in_place(a, const_b):
         """ scale a by a constant elementswise """
-        return [elem_a * const_b_b for elem_a in a]
+        np.multiply(a, const_b, out=a)
 
 Notice how we wrapped the split type for the first argument (which is mutated
 during execution of the function) with ``mut``. This signals to the system that
