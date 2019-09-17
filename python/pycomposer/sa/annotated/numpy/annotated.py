@@ -1,11 +1,11 @@
-from pycomposer import *
-import time
 
-import sharedmem
 import numpy as np
 import scipy.special as ss
+import sharedmem
 
 from copy import deepcopy as dc
+from sa.annotation import *
+from sa.annotation.split_types import *
 
 class NdArraySplit(SplitType):
 
@@ -73,10 +73,6 @@ erf         = sa(dc(_args), dc(_kwargs), dc(_ret))(ss.erf)
 
 # addreduce = np.add.reduce
 addreduce = sa(dc(_args), dc(_kwargs), dc(_ret))(np.add.reduce)
-
-_args = (NdArraySplit(), Broadcast())
-_kwargs = { 'axis': Broadcast() }
-# roll = sa(dc(_args), dc(_kwargs), dc(NdArraySplit()))(np.roll)
 
 def ones(shape, dtype=None, order='C'):
     result = sharedmem.empty(shape)

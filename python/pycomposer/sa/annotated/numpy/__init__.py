@@ -3,4 +3,6 @@
 from numpy import *
 
 from .annotated import *
-from .sa import evaluate
+
+# Provide an explicit evaluate function.
+from sa.annotation import evaluate
