@@ -3,4 +3,4 @@
 from pandas import *
 
 from .annotated import *
-from pycomposer import evaluate
+from sa.annotation import evaluate

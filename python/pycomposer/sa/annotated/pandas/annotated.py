@@ -6,13 +6,13 @@ use those functions instead. We could equivalently just replace methods on the D
 split `self` instead of the DataFrame passed in here.
 """
 
-from pycomposer import *
-import time
-
 import numpy as np
 import pandas as pd
+import time
 
 from copy import deepcopy as dc
+from sa.annotation import *
+from sa.annotation.split_types import *
 
 class UniqueSplit(SplitType):
     """ For the result of Unique """
