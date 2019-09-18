@@ -7,4 +7,7 @@ API Reference for Writing SAs
     :exclude-members: __call__, __weakref__
     :show-inheritance:
 
+Subpackages
+-----------
+
 .. toctree:: sa.annotation.split_types

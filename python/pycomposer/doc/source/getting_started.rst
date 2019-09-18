@@ -1,7 +1,7 @@
 Getting Started
 **************************************
 
-This package contains examples of how to use split annotations (SAs) for your own
+This page contains examples of how to use split annotations (SAs) for your own
 programs.
 
 Disclaimer: unlike many of the examples shown here, SAs will be most effective
@@ -67,6 +67,8 @@ Python lists::
     from sa.annotation import STOP_ITERATION
     from sa.annotation.split_types import SplitType
 
+    import itertools
+
     class ListSplit(SplitType):
         def combine(self, values):
             return list(itertools.chain.from_iterable(values))    
@@ -130,7 +132,7 @@ for NumPy arrays)::
 
     @sa((mut(ListSplit()), Broadcast()), {}, None)
     def scale_in_place(a, const_b):
-        """ scale a by a constant elementswise """
+        """ scale a by a constant elementswise. Assumes `a` uses shared memory."""
         np.multiply(a, const_b, out=a)
 
 Notice how we wrapped the split type for the first argument (which is mutated

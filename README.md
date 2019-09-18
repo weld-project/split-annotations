@@ -4,7 +4,7 @@ This is the main source code repository for Split Annotations. It contains the s
 
 Split annotations (SAs) are a system for enabling optimizations such as pipelining and parallelization underneath existing libraries. Other approaches for enabling these optimizations, such as intermediate representations, compilers, or DSLs, are heavyweight solutions that require re-architecting existing code. Unlike these approaches, SAs enable these optimizations _without requiring changes to existing library functions_.
 
-You can get started with split annotations in Python with: `pip install sa`.
+You can get started with split annotations in Python with: `pip install sa`. ** Documentation is [here](https://www.weld.rs/split-annotations/docs/). **
 
 See [Installing from Source](#installing-from-source) for instructions on how to build the C version of split annotations.
 
