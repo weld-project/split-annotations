@@ -1,6 +1,7 @@
 
 from collections import defaultdict, deque
 import copy
+import logging
 
 from .annotation import Annotation
 from .config import config
@@ -340,7 +341,7 @@ class LogicalPlan:
                             changed[0] |= ty._sync(other)
                 op.pipeline = changed[1]
             except SplitTypeError as e:
-                print("Pipeline break: {}".format(e))
+                logging.debug("Pipeline break: {}".format(e))
                 changed[1] += 1
                 op.pipeline = changed[1]
 
@@ -433,13 +434,10 @@ def evaluate_dag(dag, workers=config["workers"], batch_size=config["batch_size"]
     try:
         dag.infer_types()
     except (SplitTypeError) as e:
-        print(e)
+        logging.error(e)
 
     vms = dag.to_vm()
     for _, vm in vms:
-
-        # print(vm.program)
-
         driver = Driver(workers=workers, batch_size=batch_size, optimize_single=True, profile=profile)
         results = driver.run(vm.program, vm.values)
 

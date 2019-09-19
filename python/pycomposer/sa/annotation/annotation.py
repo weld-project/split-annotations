@@ -1,6 +1,7 @@
 import functools
-from inspect import signature, Parameter, Signature
+import logging
 
+from inspect import signature, Parameter, Signature
 from .split_types import Broadcast
 
 class Mut(object):
@@ -76,8 +77,7 @@ class Annotation(object):
                 assert(name in kwargs)
 
         except ValueError as e:
-            pass
-            # print("WARN: Continuing without verification of annotation")
+            logging.warn("Continuing without verification of annotation")
 
         # The mutable values. These are indices for positionals and string
         # names for keyword args.
