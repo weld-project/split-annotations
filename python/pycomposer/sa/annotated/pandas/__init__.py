@@ -18,8 +18,8 @@ class SeriesSplit(SplitType):
 Series.abs =  sa((SeriesSplit(),), {}, SeriesSplit())(Series.abs)
 
 Series.add = sa((SeriesSplit(), SeriesSplit()), {}, SeriesSplit())(Series.add)
-Series.all = sa((SeriesSplit(),), {}, AllSplit())(Series.all)
-Series.any = sa((SeriesSplit(),), {}, AnySplit())(Series.any)
+# Series.all = sa((SeriesSplit(),), {}, AllSplit())(Series.all)
+# Series.any = sa((SeriesSplit(),), {}, AnySplit())(Series.any)
 Series.apply = sa((SeriesSplit(), Broadcast()), {}, SeriesSplit())(Series.apply)
 
 Series.between = sa((SeriesSplit(), Broadcast(), Broadcast()), {}, SeriesSplit())(Series.between)
@@ -34,13 +34,14 @@ Series.div = sa((SeriesSplit(), SeriesSplit()), {}, SeriesSplit())(Series.div)
 Series.divide = sa((SeriesSplit(), SeriesSplit()), {}, SeriesSplit())(Series.divide)
 Series.divmod = sa((SeriesSplit(), SeriesSplit()), {}, SeriesSplit())(Series.divmod)
 
-Series.dot = sa((SeriesSplit(), SeriesSplit()), {}, DotSplit())(Series.dot)
+# Series.dot = sa((SeriesSplit(), SeriesSplit()), {}, DotSplit())(Series.dot)
 
-Series.drop_duplicates = sa((SeriesSplit(),), {}, DotSplit())(Series.drop_duplicates)
-Series.dropna = sa((SeriesSplit(),), {}, DotSplit())(Series.dropna)
+# TODO(shoumik:): These should return an unknown split type since they change the output shape.
+Series.drop_duplicates = sa((SeriesSplit(),), {}, SeriesSplit())(Series.drop_duplicates)
+Series.dropna = sa((SeriesSplit(),), {}, SeriesSplit())(Series.dropna)
 
-Series.eq = sa((SeriesSplit(), SeriesSplit()), {}, EqSplit())(Series.eq)
-Series.equals = sa((SeriesSplit(), SeriesSplit()), {}, EqualsSplit())(Series.equals)
+# Series.eq = sa((SeriesSplit(), SeriesSplit()), {}, EqSplit())(Series.eq)
+# Series.equals = sa((SeriesSplit(), SeriesSplit()), {}, EqualsSplit())(Series.equals)
 
 Series.ffill = sa((SeriesSplit(), ), {}, SeriesSplit())(Series.ffill)
 Series.floordiv = sa((SeriesSplit(), SeriesSplit()), {}, SeriesSplit())(Series.floordiv)

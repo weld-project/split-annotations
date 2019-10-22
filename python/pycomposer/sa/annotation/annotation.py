@@ -77,7 +77,7 @@ class Annotation(object):
                 assert(name in kwargs)
 
         except ValueError as e:
-            logging.warn("Continuing without verification of annotation")
+            logging.info("Continuing without verification of annotation")
 
         # The mutable values. These are indices for positionals and string
         # names for keyword args.
