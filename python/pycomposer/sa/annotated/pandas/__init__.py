@@ -44,12 +44,3 @@ Series.equals = sa((SeriesSplit(), SeriesSplit()), {}, EqualsSplit())(Series.equ
 
 Series.ffill = sa((SeriesSplit(), ), {}, SeriesSplit())(Series.ffill)
 Series.floordiv = sa((SeriesSplit(), SeriesSplit()), {}, SeriesSplit())(Series.floordiv)
-
-# Goal is to accelerate general Pandas workloads, but we don't want to rewrite Pandas from the ground up to do so (which was the approach
-# that Baloo, Modin, Grizzly, Dask, etc. are all taking). Instead, we want to _incrementally_ shift existing libraries such as Pandas to
-# use a runtime, and only in cases where the runtime will actually help improve performance or will exploit parallelism.
-
-# 1. Annotate functions in Pandas, but and allow fallback to non-annoated Pandas functions
-# 2. Support compilation for a subset of the Pandas functions.
-
-
