@@ -1,7 +1,7 @@
 split annotations: optimizing apps that combine APIs
 ****************************************************
 
-**Current version: 0.0.2**
+**Current version: 0.0.4**
 
 Welcome to split annotations for Python!
 
@@ -16,7 +16,7 @@ Split annotations are meant to be easy to integrate compared to compilers or
 other runtimes.
 
 You can install split annotations on most systems with ``pip install sa``. SAs
-require Python 3.5 or above.
+require Python 3.6 or above.
 
 **Useful Links**:
 `GitHub Repository <https://github.com/weld-project/split-annotations>`_ |

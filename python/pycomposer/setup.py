@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(name='sa',
-      version='0.0.2',
+      version='0.0.4',
       description='Python split annotations package',
       long_description=long_description,
       long_description_content_type="text/markdown",
@@ -19,5 +19,11 @@ setuptools.setup(name='sa',
           "License :: OSI Approved :: BSD License",
           "Operating System :: OS Independent",
           ],
+      install_requires=[
+          'numpy',
+          'pandas',
+          'scipy',
+          'sharedmem'
+      ],
       python_requires='>=3.6',
       )
