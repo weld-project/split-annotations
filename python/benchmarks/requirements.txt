@@ -20,7 +20,7 @@ pathlib2==2.3.3
 plac==0.9.6
 pluggy==0.9.0
 preshed==2.0.1
-py==1.8.0
+py==1.10.0
 pyarrow==0.13.0
 pytest==4.4.0
 python-dateutil==2.8.0
