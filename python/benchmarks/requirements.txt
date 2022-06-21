@@ -14,7 +14,7 @@ llvmlite==0.28.0
 more-itertools==7.0.0
 murmurhash==1.0.2
 numba==0.43.1
-numpy==1.16.2
+numpy==1.22.0
 pandas==0.24.2
 pathlib2==2.3.3
 plac==0.9.6
