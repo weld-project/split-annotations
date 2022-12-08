@@ -3,7 +3,7 @@ attrs==19.1.0
 blis==0.2.4
 bohrium==0.10.2.post29
 bohrium-api==0.10.2.post29
-certifi==2019.3.9
+certifi==2022.12.7
 chardet==3.0.4
 cloudpickle==0.8.1
 cymem==2.0.2
